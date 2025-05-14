@@ -19,7 +19,8 @@ def parse_arguments():
     parser.add_argument(
         '--report',
         required=True,
-        choices=['payout'],  # В будущем можно добавить другие типы отчётов
+        # В будущем можно добавить другие типы отчётов
+        choices=['payout_terminal', 'payout_json'],
         help='Тип отчёта: "payout" для отчёта по выплатам'
     )
     parser.add_argument(
@@ -65,10 +66,12 @@ def main():
     combined_result = process_files(args.files)
 
     # Выбираем тип отчёта
-    if args.report == 'payout':
+    if args.report == 'payout_terminal':
         # Добавляем payout для вывода
         combined_result = payout(combined_result)
         payout_to_terminal(combined_result)
+    elif args.report == 'payout_json':
+        combined_result = payout(combined_result)
         payout_to_json(combined_result, output_file=f'{args.output}.json')
 
     sys.exit()
