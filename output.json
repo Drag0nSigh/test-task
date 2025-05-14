@@ -1,0 +1,14 @@
+{
+    "HR": {
+        "employees": [
+            {
+                "name": "Grace Lee",
+                "hours_worked": 160,
+                "hourly_rate": 45,
+                "payout": 7200
+            }
+        ],
+        "total_hours": 160,
+        "total_payout": 7200
+    }
+}
